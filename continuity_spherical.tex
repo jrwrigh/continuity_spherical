@@ -202,14 +202,86 @@ We'll first start with the defining the the four components of the continuity eq
                 \cancel{\rho u_r r^2 \sin\theta d\theta d\phi}
             \end{multline*}
 
-            \begin{equation}
+            \begin{equation}\label{eq:mdotr}
+                \therefore
                 \dot{m}_r = \frac{\partial \rho u_r}{\partial r} r^2 \sin\theta dr d\theta d\phi +
                 2\rho u_r r\sin\theta dr d\theta d\phi
-                \label{eq:mdotr}
             \end{equation}
 
+    \subsection{Polar Mass Flow}
+        \subsubsection{Polar Mass Flux}
+            \begin{equation}
+                \dot{m}_{\theta,in}'' = \rho u_{\theta}
+            \end{equation}
+            \begin{equation}
+                \dot{m}_{\theta,out}'' = \rho u_{\theta}  +
+                \frac{\partial \rho u_{\theta}}{\partial \theta} d\theta
+            \end{equation}
 
-\section{Combining Terms} \label{sect:combineterms}
+        \subsubsection{Polar Face Areas}
+        \paragraph{Inlet}
+            \begin{equation*}
+                l_{short} = r\sin\theta d\phi \qquad
+                l_{long} = (r + dr)\sin\theta d\phi 
+            \end{equation*}
+            \begin{equation}\label{eq:Athetain_init}
+                A_{\theta,in} = \tfrac{1}{2} \left[r\sin\theta d\phi +  (r + dr)\sin\theta d\phi\right] \times dr
+            \end{equation}
+            \begin{equation*}
+                \Rightarrow
+                \tfrac{1}{2} \big[r\sin\theta dr d\phi +  \big(rdr + \cancelto{0}{dr^2}\big)\sin\theta d\phi\big] 
+                \Rightarrow
+                \tfrac{1}{2} \left[r\sin\theta dr d\phi + r\sin\theta dr d\phi\right]
+            \end{equation*}
+            \begin{equation}\label{eq:Athetain_final}
+                A_{\theta,in} = r\sin\theta dr d\phi
+            \end{equation}
+
+        \paragraph{Oulet}
+            \begin{equation*}
+                l_{short} = r\sin\left(\theta + d\theta\right) d\phi \qquad
+                l_{long} = (r + dr)\sin\left(\theta + d\theta\right) d\phi 
+            \end{equation*}
+            \begin{equation}\label{eq:Athetaout_init}
+                A_{\theta,out} = \tfrac{1}{2} \left[r\sin\left(\theta + d\theta\right) d\phi +  (r + dr)\sin\left(\theta + d\theta\right) d\phi \right] \times dr
+            \end{equation}
+            Similarly to inlet, equation \ref{eq:Athetaout_init} reduces to:
+            \begin{equation*}
+                \Rightarrow
+                r\sin\left(\theta + d\theta \right) dr d\phi
+            \end{equation*}
+            
+            Using the trig identity defined in the radial section, we find:
+            \begin{equation}\label{eq:Athetaout_final}
+                A_{\theta,out} = r\sin\theta dr d\phi + r\cos\theta dr d\theta d\phi
+            \end{equation}
+
+        \subsubsection{Combining Polar Flow Terms}
+            \begin{equation*}
+            \begin{split}
+                \dot{m}_{\theta} & = (\dot{m}''_{\theta,out} A_{\theta,out} - \dot{m}''_{\theta,in} A_{\theta,in}) \\
+                & = \left( \rho u_{\theta}  + \frac{\partial \rho u_{\theta}}{\partial \theta} d\theta \right) 
+               \left(r\sin\theta dr d\phi + r\cos\theta dr d\theta d\phi\right) - 
+               \left(\rho u_{\theta}\right) \left(r\sin\theta dr d\phi\right)
+            \end{split}
+            \end{equation*}
+
+            \begin{multline*}
+                \Rightarrow
+                \cancel{\rho u_{\theta}r\sin\theta dr d\phi +} 
+                \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta dr d\theta d\phi +
+                \rho u_{\theta} r\cos\theta dr d\theta d\phi \\ + 
+                \frac{\partial\rho u_{\theta}}{\partial\theta} r\cos\theta dr \cancelto{0}{d\theta^2} d\phi -
+                \cancel{\rho u_{\theta}r\sin\theta dr d\phi}
+            \end{multline*}
+
+            \begin{equation}\label{eq:mdottheta}
+                \therefore \quad \dot{m}_{\theta} = 
+                \rho u_{\theta} r\cos\theta dr d\theta d\phi + 
+                \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta dr d\theta d\phi
+            \end{equation}
+
+\section{Combining Terms}\label{sect:combineterms}
 
 
 \end{document}
