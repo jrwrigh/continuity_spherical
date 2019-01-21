@@ -280,8 +280,69 @@ We'll first start with the defining the the four components of the continuity eq
                 \rho u_{\theta} r\cos\theta dr d\theta d\phi + 
                 \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta dr d\theta d\phi
             \end{equation}
+        
+    \subsection{Azimuthal Mass Flow}
+        \subsubsection{Azimuthal Mass Flux}
+            \begin{equation}
+                \dot{m}_{\phi,in}'' = \rho u_{\phi}
+            \end{equation}
+            \begin{equation}
+                \dot{m}_{\phi,out}'' = \rho u_{\phi}  +
+                \frac{\partial \rho u_{\phi}}{\partial \phi} d\phi
+            \end{equation}
+
+        \subsubsection{Azimuthal Face Areas}
+        \paragraph{Inlet}
+            \begin{equation*}
+                l_{short} = r d\theta \qquad
+                l_{long} = (r + dr) d\theta 
+            \end{equation*}
+            \begin{equation}\label{eq:Aphi_init}
+                A_{\phi,in} = \tfrac{1}{2} \left[rd\theta + \left(r+dr\right)d\theta\right] \times dr
+            \end{equation}
+            \begin{equation*}
+                \Rightarrow
+                \tfrac{1}{2} \big[r dr d\theta +  \big(rdr + \cancelto{0}{dr^2}\big) d\theta \big] 
+                \Rightarrow
+                \tfrac{1}{2} \left[r dr d\theta + r dr d\theta\right]
+            \end{equation*}
+            \begin{equation}\label{eq:Athetain_final}
+                A_{\phi,in} = r dr d\theta
+            \end{equation}
+        \paragraph{Outlet}
+            The inlet area is the same as the outlet area.
+            \begin{equation}
+                A_{\phi,in} = A_{\phi,out}
+            \end{equation}
+
+        \subsubsection{Combining Azimuthal Flow Terms}
+            \begin{equation*}
+            \begin{split}
+                \dot{m}_{\phi} & = (\dot{m}''_{\phi,out} A_{\phi,out} - \dot{m}''_{\phi,in} A_{\phi,in}) \\
+                & = \left( \rho u_{\phi}  + \frac{\partial \rho u_{\phi}}{\partial \phi} d\phi \right)
+                \left(r dr d\theta \right) -
+                \left(\rho u_{\phi} \right) \left(r dr d\theta \right)
+            \end{split}
+            \end{equation*}
+
+            \begin{equation*}
+                \Rightarrow
+                \cancel{\rho u_\phi r dr d\theta} + \frac{\partial \rho u_{\phi}}{\partial \phi} r dr d\theta d\phi -
+                \cancel{\rho u_\phi r dr d\theta} 
+            \end{equation*}
+
+            \begin{equation}
+                \dot{m}_{\phi} = \frac{\partial \rho u_{\phi}}{\partial \phi} r dr d\theta d\phi 
+            \end{equation}
+
 
 \section{Combining Terms}\label{sect:combineterms}
 
+    \begin{equation}
+        \frac{\partial m}{\partial t} + 
+        \sum_{i=r, \theta, \phi}
+        (\dot{m}''_{i,out} A_{i,out} - \dot{m}''_{i,in} A_{i,in}) = 0 
+        \label{eq:base_equation_full}
+    \end{equation}
 
 \end{document}
