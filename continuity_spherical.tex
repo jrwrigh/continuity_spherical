@@ -57,26 +57,24 @@ In \S~\ref{sect:combineterms}, we'll combine and simplify the terms into the con
 \subsection{Continuity Equation}
     The basic continuity equation is simply the sum of the mass entering the control volume equals the time rate of change of the mass in the control volume. The base equation that will be used is thus:
     %
-    \begin{equation*}
-        \frac{\partial m}{\partial t} = \sum \dot{m}_i
-    \end{equation*}
+    \begin{equation}\label{eq:base_equation_orig}
+        \frac{\partial m}{\partial t} = - \sum \Delta\dot{m}_i = -\Delta\dot{m}_r - \Delta\dot{m}_{\theta} - \Delta\dot{m}_{\phi} 
+    \end{equation}
 
     The mass flows entering/exiting the control volume can be written as the product of the flux at the face of a control volume, \(\dot{m}''_{ij}\), and the area of said face, \(A_{ij}\):
     %
-    \begin{equation}
+    \begin{equation}\label{eq:base_equation_fluxarea}
         \frac{\partial m}{\partial t} = \sum \dot{m}''_{ij} A_{ij}
-        \label{eq:base_equation}
     \end{equation}
 
     Here, \(i\) represents one of the three coordinate directions (\(r, \theta, \phi\)), and \(j\) represents the two opposite faces in the coordinate directions. We assume the flow is moving in the positive coordinate directions exclusively, so \(j\) can be thought of as the mass flow going in and mass flow going out.
 
-    This turns equation~\ref{eq:base_equation} into:
+    This turns equation~\ref{eq:base_equation_fluxarea} into:
     %
-    \begin{equation}
+    \begin{equation}\label{eq:base_equation_full}
         \frac{\partial m}{\partial t} + 
         \sum_{i=r, \theta, \phi}
         (\dot{m}''_{i,out} A_{i,out} - \dot{m}''_{i,in} A_{i,in}) = 0 
-        \label{eq:base_equation_full}
     \end{equation}
 
     % \begin{equation}
@@ -87,12 +85,11 @@ In \S~\ref{sect:combineterms}, we'll combine and simplify the terms into the con
     %     \label{eq:base_equation}
     % \end{equation}
 
-\subsection{Other Information} \label{sect:otherinfo}
+\subsection{Other Information}\label{sect:otherinfo}
 Many of the faces of the control volume can be simplified to a trapezoid. The area of a trapezoid is given as the product of the average of the two midsection sides, \(l_{short} + l_{long}\), and the height of the trapezoid, \(h\):
 %
-\begin{equation}
+\begin{equation}\label{eq:traparea}
     A_{trapezoid} = \tfrac{1}{2} (l_{short} + l_{long}) \times h
-    \label{eq:traparea}
 \end{equation}
 
 The order of differential terms is used extensively in this document. To summarize, whenever you have a differential term, such as \(dr\), raised to a higher order, you assume it is equal to zero. This is sort of a reverse l'Hopital's rule, where as a function goes to infinity, the lower order terms dominate over higher order terms.
@@ -105,10 +102,9 @@ We'll first start with the defining the the four components of the continuity eq
             \frac{\partial m}{\partial t} = \frac{\partial \rho}{\partial t}d\volume
         \end{equation*}
 
-        \begin{equation}
-            \frac{\partial m}{\partial t} = 
-            \frac{\partial \rho}{\partial t} r^2 \sin\theta dr d\theta d\phi
-            \label{eq:dm/dt}
+        \begin{equation}\label{eq:dm/dt}
+            \boxed{\frac{\partial m}{\partial t} = 
+            \frac{\partial \rho}{\partial t} r^2 \sin\theta dr d\theta d\phi}
         \end{equation}
 
     \subsection{Radial Mass Flow}
@@ -187,7 +183,7 @@ We'll first start with the defining the the four components of the continuity eq
 
         \subsubsection{Combining Radial Flow Terms}
             \begin{multline*}
-                \dot{m}_r = (\dot{m}''_{r,out} A_{r,out} - \dot{m}''_{r,in} A_{r,in}) 
+                \Delta\dot{m}_r = (\dot{m}''_{r,out} A_{r,out} - \dot{m}''_{r,in} A_{r,in}) 
                 \\\Rightarrow
                 \left(\rho u_r  + \frac{\partial \rho u_r}{\partial r} dr\right)\left(r^2 \sin\theta d\theta d\phi + 2r\sin\theta dr d\theta d\phi\right) -
                 \left(\rho u_r\right)\left(r^2 \sin\theta d\theta d\phi\right)
@@ -203,9 +199,9 @@ We'll first start with the defining the the four components of the continuity eq
             \end{multline*}
 
             \begin{equation}\label{eq:mdotr}
-                \therefore
-                \dot{m}_r = \frac{\partial \rho u_r}{\partial r} r^2 \sin\theta dr d\theta d\phi +
-                2\rho u_r r\sin\theta dr d\theta d\phi
+                \therefore\quad
+                \boxed{\Delta\dot{m}_r = \frac{\partial \rho u_r}{\partial r} r^2 \sin\theta dr d\theta d\phi +
+                2\rho u_r r\sin\theta dr d\theta d\phi}
             \end{equation}
 
     \subsection{Polar Mass Flow}
@@ -259,7 +255,7 @@ We'll first start with the defining the the four components of the continuity eq
         \subsubsection{Combining Polar Flow Terms}
             \begin{equation*}
             \begin{split}
-                \dot{m}_{\theta} & = (\dot{m}''_{\theta,out} A_{\theta,out} - \dot{m}''_{\theta,in} A_{\theta,in}) \\
+                \Delta\dot{m}_{\theta} & = (\dot{m}''_{\theta,out} A_{\theta,out} - \dot{m}''_{\theta,in} A_{\theta,in}) \\
                 & = \left( \rho u_{\theta}  + \frac{\partial \rho u_{\theta}}{\partial \theta} d\theta \right) 
                \left(r\sin\theta dr d\phi + r\cos\theta dr d\theta d\phi\right) - 
                \left(\rho u_{\theta}\right) \left(r\sin\theta dr d\phi\right)
@@ -276,9 +272,9 @@ We'll first start with the defining the the four components of the continuity eq
             \end{multline*}
 
             \begin{equation}\label{eq:mdottheta}
-                \therefore \quad \dot{m}_{\theta} = 
+                \therefore \quad \boxed{\Delta\dot{m}_{\theta} = 
                 \rho u_{\theta} r\cos\theta dr d\theta d\phi + 
-                \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta dr d\theta d\phi
+                \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta dr d\theta d\phi}
             \end{equation}
         
     \subsection{Azimuthal Mass Flow}
@@ -318,7 +314,7 @@ We'll first start with the defining the the four components of the continuity eq
         \subsubsection{Combining Azimuthal Flow Terms}
             \begin{equation*}
             \begin{split}
-                \dot{m}_{\phi} & = (\dot{m}''_{\phi,out} A_{\phi,out} - \dot{m}''_{\phi,in} A_{\phi,in}) \\
+                \Delta\dot{m}_{\phi} & = (\dot{m}''_{\phi,out} A_{\phi,out} - \dot{m}''_{\phi,in} A_{\phi,in}) \\
                 & = \left( \rho u_{\phi}  + \frac{\partial \rho u_{\phi}}{\partial \phi} d\phi \right)
                 \left(r dr d\theta \right) -
                 \left(\rho u_{\phi} \right) \left(r dr d\theta \right)
@@ -331,18 +327,114 @@ We'll first start with the defining the the four components of the continuity eq
                 \cancel{\rho u_\phi r dr d\theta} 
             \end{equation*}
 
-            \begin{equation}
-                \dot{m}_{\phi} = \frac{\partial \rho u_{\phi}}{\partial \phi} r dr d\theta d\phi 
+            \begin{equation}\label{eq:mdotphi}
+                \boxed{\Delta\dot{m}_{\phi} = \frac{\partial \rho u_{\phi}}{\partial \phi} r dr d\theta d\phi }
             \end{equation}
 
 
 \section{Combining Terms}\label{sect:combineterms}
+To recap, we're trying to solve equation~\ref{eq:base_equation_orig}:
+    \begin{equation}
+        \frac{\partial m}{\partial t} = - \sum \Delta\dot{m}_i = -\Delta\dot{m}_r - \Delta\dot{m}_{\theta} - \Delta\dot{m}_{\phi} 
+        \tag{\ref{eq:base_equation_orig}}
+    \end{equation}
+
+We currently have:
+    \begin{equation}
+        \frac{\partial m}{\partial t} = 
+        \frac{\partial \rho}{\partial t} r^2 \sin\theta dr d\theta d\phi
+        \tag{\ref{eq:dm/dt}}
+    \end{equation}
 
     \begin{equation}
-        \frac{\partial m}{\partial t} + 
-        \sum_{i=r, \theta, \phi}
-        (\dot{m}''_{i,out} A_{i,out} - \dot{m}''_{i,in} A_{i,in}) = 0 
-        \label{eq:base_equation_full}
+        \Delta\dot{m}_r = \frac{\partial \rho u_r}{\partial r} r^2 \sin\theta dr d\theta d\phi +
+        2\rho u_r r\sin\theta dr d\theta d\phi
+        \tag{\ref{eq:mdotr}}
     \end{equation}
+
+    \begin{equation}
+        \Delta\dot{m}_{\theta} = 
+        \rho u_{\theta} r\cos\theta dr d\theta d\phi + 
+        \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta dr d\theta d\phi
+        \tag{\ref{eq:mdottheta}}
+    \end{equation}
+
+    \begin{equation}
+        \Delta\dot{m}_{\phi} = \frac{\partial \rho u_{\phi}}{\partial \phi} r dr d\theta d\phi 
+        \tag{\ref{eq:mdotphi}}
+    \end{equation}
+
+    Combining the terms together into equation \ref{eq:base_equation_orig}, we get:
+
+    \begin{equation}
+        \begin{split}
+        \frac{\partial \rho}{\partial t} r^2 \sin\theta dr d\theta d\phi = &
+        \left(\frac{\partial \rho u_r}{\partial r} r^2 \sin\theta dr d\theta d\phi +
+        2\rho u_r r\sin\theta dr d\theta d\phi \right) \\
+        & + \left(\rho u_{\theta} r\cos\theta dr d\theta d\phi + 
+        \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta dr d\theta d\phi \right) \\ 
+        & + \left(\frac{\partial \rho u_{\phi}}{\partial \phi} r dr d\theta d\phi \right)
+        \end{split}
+    \end{equation}
+
+    Factor out and eliminate the differential volume:
+    \begin{multline*}
+        \frac{\partial \rho}{\partial t} \cancelto{1}{\left( r^2 \sin\theta dr d\theta d\phi \right)} = \\
+        \left[
+        \left(\frac{2 \rho u_r}{r} + \frac{\partial \rho u_r}{\partial r} \right)_a
+        + \left(\frac{\rho u_{\theta} \cos\theta}{r \sin\theta} + 
+        \frac{\partial\rho u_{\theta}}{\partial\theta} \frac{1}{r} \right)_b
+        + \left(\frac{\partial \rho u_{\phi}}{\partial \phi} \right)
+        \right] \cancel{\left( r^2 \sin\theta dr d\theta d\phi \right)}
+    \end{multline*}
+
+    \begin{equation}\label{eq:continuitywithaandb}
+        \frac{\partial \rho}{\partial t}  =
+        \left[
+        \left(\frac{2 \rho u_r}{r} + \frac{\partial \rho u_r}{\partial r} \right)_a
+        + \left(\frac{\rho u_{\theta} \cos\theta}{r \sin\theta} + 
+        \frac{\partial\rho u_{\theta}}{\partial\theta} \frac{1}{r} \right)_b
+        + \left(\frac{\partial \rho u_{\phi}}{\partial \phi} \right)
+        \right] 
+    \end{equation}
+
+    We'll now treat terms \(\boxed{a}\) and \(\boxed{b}\) individually.
+
+    \begin{align*}
+        \boxed{a} & = \frac{2 \rho u_r}{r} + \frac{\partial \rho u_r}{\partial r} \\
+        & \Rightarrow \frac{2 \rho u_r r}{r^2} + \frac{\partial \rho u_r}{\partial r} \\
+        & \Rightarrow \frac{1}{r^2} \left(2\rho u_r r + \frac{\partial \rho u_r}{\partial r} r^2 \right) \\
+        & \Rightarrow \frac{1}{r^2} \left(\rho u_r \frac{\partial r^2}{\partial r} + \frac{\partial \rho u_r}{\partial r} r^2 \right) \\
+        \text{by chain rule}& \Rightarrow \frac{1}{r^2}  \frac{\partial \rho u_r r^2}{\partial r} \\
+    \end{align*}
+%
+    \begin{equation}\label{eq:terma}
+        \therefore\quad
+        \left(\frac{2 \rho u_r}{r} + \frac{\partial \rho u_r}{\partial r} \right)_a = \frac{1}{r^2}  \frac{\partial \rho u_r r^2}{\partial r} 
+    \end{equation}
+
+    \begin{align*}
+        \boxed{b} & = \frac{\rho u_{\theta} \cos\theta}{r \sin\theta} + \frac{\partial\rho u_{\theta}}{\partial\theta} \frac{1}{r} \\
+        & \Rightarrow \frac{1}{r\sin\theta} \left(\rho u_{\theta} \cos\theta + \frac{\partial\rho u_{\theta}}{\partial\theta} \sin\theta \right) \\
+        & \Rightarrow \frac{1}{r\sin\theta} \left(\rho u_{\theta} \frac{\partial\sin\theta}{\partial\theta} + \frac{\partial\rho u_{\theta}}{\partial\theta} \sin\theta \right) \\
+        \text{by chain rule}& \Rightarrow \frac{1}{r\sin\theta} \frac{\partial\rho u_{\theta} \sin\theta}{\partial\theta}  \\
+    \end{align*}
+%
+    \begin{equation}\label{eq:termb}
+        \therefore\quad
+        \left(\frac{\rho u_{\theta} \cos\theta}{r \sin\theta} + \frac{\partial\rho u_{\theta}}{\partial\theta} \frac{1}{r} \right)_b =
+        \frac{1}{r\sin\theta} \frac{\partial\rho u_{\theta} \sin\theta}{\partial\theta} 
+    \end{equation}
+
+    Substituting back the new terms for \(\boxed{a}\) and \(\boxed{b}\) into \ref{eq:continuitywithaandb}, we get the continuity equation in spherical coordinates:
+
+    \begin{equation}
+        \boxed{\frac{\partial \rho}{\partial t}  =
+        \frac{1}{r^2}  \frac{\partial \rho u_r r^2}{\partial r} +
+        \frac{1}{r\sin\theta} \frac{\partial\rho u_{\theta} \sin\theta}{\partial\theta} 
+        + \frac{\partial \rho u_{\phi}}{\partial \phi} }
+    \end{equation}
+
+
 
 \end{document}
