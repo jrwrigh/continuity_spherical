@@ -48,7 +48,7 @@ In \S~\ref{sect:combineterms}, we'll combine and simplify the terms into the con
     For reference, the volume of a spherical differential element is given by equation~\ref{eq:diffvolume}.
     %
     \begin{equation}
-        d\volume = r^2 \sin \theta dr d\theta d\phi
+        \textrm{d}\volume = r^2 \sin \theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi
         \label{eq:diffvolume}
     \end{equation}
 
@@ -104,7 +104,7 @@ We'll first start with the defining the the four components of the continuity eq
 
         \begin{equation}\label{eq:dm/dt}
             \boxed{\frac{\partial m}{\partial t} = 
-            \frac{\partial \rho}{\partial t} r^2 \sin\theta dr d\theta d\phi}
+            \frac{\partial \rho}{\partial t} r^2 \sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi}
         \end{equation}
 
     \subsection{Radial Mass Flow}
@@ -115,7 +115,7 @@ We'll first start with the defining the the four components of the continuity eq
             %
             \begin{equation}
                 \dot{m}_{r,out}'' = \rho u_r  +
-                \frac{\partial \rho u_r}{\partial r} dr
+                \frac{\partial \rho u_r}{\partial r} \textrm{d}r
             \end{equation}
 
         \subsubsection{Radial Face Areas}
@@ -123,11 +123,11 @@ We'll first start with the defining the the four components of the continuity eq
 
             The faces in the radial direction form a trapezoid, so we use equation~\ref{eq:traparea} to calculate it's area.
             \begin{equation*}
-                l_{short} = r\sin(\theta) d\phi  \qquad
-                l_{long} = r\sin(\theta + d\theta) d\phi
+                l_{short} = r\sin(\theta) \textrm{d}\phi  \qquad
+                l_{long} = r\sin(\theta + \textrm{d}\theta) \textrm{d}\phi
             \end{equation*}
             \begin{equation}
-                A_{r,in} = \tfrac{1}{2} [r\sin(\theta) d\phi + r\sin(\theta + d\theta) d\phi] \times rd\theta
+                A_{r,in} = \tfrac{1}{2} [r\sin(\theta) \textrm{d}\phi + r\sin(\theta + \textrm{d}\theta) \textrm{d}\phi] \times r\textrm{d}\theta
                 \label{eq:Arin_init}
             \end{equation}
 
@@ -145,39 +145,39 @@ We'll first start with the defining the the four components of the continuity eq
             Substituting this into equation~\ref{eq:Arin_init} and reorganizing terms, we get the following:
             \begin{equation*}
                 \text{Eqn.}\ \ref{eq:Arin_init} \Rightarrow
-                r^2\sin\theta d\theta d\phi + \tfrac{1}{2}r^2\cos \theta d\theta^2 d\phi
+                r^2\sin\theta \textrm{d}\theta \textrm{d}\phi + \tfrac{1}{2}r^2\cos \theta \textrm{d}\theta^2 \textrm{d}\phi
             \end{equation*}
 
             We assume \(d\theta^2 \approx 0\) (see \S \ref{sect:otherinfo}), which gives us:
             \begin{equation}
-                A_{r,in} = r^2 \sin\theta d\theta d\phi
+                A_{r,in} = r^2 \sin\theta \textrm{d}\theta \textrm{d}\phi
                 \label{eq:Arin_final}
             \end{equation}
 
         \paragraph{Outlet}
             The outlet face is done identically to the inlet face.
             \begin{equation*}
-                l_{short} = (r + dr)\sin(\theta) d\phi  \qquad
-                l_{long} = (r + dr)\sin(\theta + d\theta) d\phi
+                l_{short} = (r + \textrm{d}r)\sin(\theta) \textrm{d}\phi  \qquad
+                l_{long} = (r + \textrm{d}r)\sin(\theta + \textrm{d}\theta) \textrm{d}\phi
             \end{equation*}
             \begin{equation}
-                A_{r,out} = \tfrac{1}{2} [(r + dr)\sin(\theta) d\phi + (r + dr)\sin(\theta + d\theta) d\phi] \times (r + dr)d\theta
+                A_{r,out} = \tfrac{1}{2} [(r + \textrm{d}r)\sin(\theta) \textrm{d}\phi + (r + \textrm{d}r)\sin(\theta + \textrm{d}\theta) \textrm{d}\phi] \times (r + \textrm{d}r)\textrm{d}\theta
                 \label{eq:Arout_init}
             \end{equation}
             \begin{equation*}
                 \Rightarrow
-                \tfrac{1}{2} (r + dr)^2 [ \sin\theta + \sin (\theta + d\theta)] d\theta d\phi
+                \tfrac{1}{2} (r + \textrm{d}r)^2 [ \sin\theta + \sin (\theta + \textrm{d}\theta)] \textrm{d}\theta \textrm{d}\phi
             \end{equation*}
 
             Substituting the same trig identity as in `Inlet' and expanding \((r + dr)^2\), and dropping higher order differential terms, we get:
             \begin{equation*}
-                \tfrac{1}{2} (r^2 + 2rdr + \cancelto{0}{dr^2}) [\sin\theta d\theta d\phi + \cos\theta \cancelto{0}{d\theta^2} d\phi]
-                \Rightarrow \tfrac{1}{2} (r^2 + 2rdr) \sin\theta d\theta d\phi
+                \tfrac{1}{2} (r^2 + 2r\textrm{d}r + \cancelto{0}{\textrm{d}r^2}) [\sin\theta \textrm{d}\theta \textrm{d}\phi + \cos\theta \cancelto{0}{\textrm{d}\theta^2} \textrm{d}\phi]
+                \Rightarrow \tfrac{1}{2} (r^2 + 2r\textrm{d}r) \sin\theta \textrm{d}\theta \textrm{d}\phi
             \end{equation*}
 
             \begin{equation}
-                \therefore\quad A_{r,out} = r^2 \sin\theta d\theta d\phi + 
-                2r\sin\theta drd\theta d\phi
+                \therefore\quad A_{r,out} = r^2 \sin\theta \textrm{d}\theta \textrm{d}\phi + 
+                2r\sin\theta \textrm{d}r\textrm{d}\theta \textrm{d}\phi
                 \label{eq:Arout_final}
             \end{equation}
 
@@ -185,23 +185,23 @@ We'll first start with the defining the the four components of the continuity eq
             \begin{multline*}
                 \Delta\dot{m}_r = (\dot{m}''_{r,out} A_{r,out} - \dot{m}''_{r,in} A_{r,in}) 
                 \\\Rightarrow
-                \left(\rho u_r  + \frac{\partial \rho u_r}{\partial r} dr\right)\left(r^2 \sin\theta d\theta d\phi + 2r\sin\theta dr d\theta d\phi\right) -
-                \left(\rho u_r\right)\left(r^2 \sin\theta d\theta d\phi\right)
+                \left(\rho u_r  + \frac{\partial \rho u_r}{\partial r} \textrm{d}r\right)\left(r^2 \sin\theta \textrm{d}\theta \textrm{d}\phi + 2r\sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi\right) -
+                \left(\rho u_r\right)\left(r^2 \sin\theta \textrm{d}\theta \textrm{d}\phi\right)
             \end{multline*}
-            Expanding out the terms, we find that the first and last terms cancel each other out and that a \(dr^2\) appears:
+            Expanding out the terms, we find that the first and last terms cancel each other out and that a \(\textrm{d}r^2\) appears:
             \begin{multline*}
                 \Rightarrow
-                \cancel{\rho u_r r^2 \sin\theta d\theta d\phi} +
-                \frac{\partial \rho u_r}{\partial r} r^2 \sin\theta dr d\theta d\phi +
-                2\rho u_r r\sin\theta dr d\theta d\phi + \\
-                \frac{\partial \rho u_r}{\partial r} 2r\sin\theta \cancelto{0}{dr^2} d\theta d\phi - 
-                \cancel{\rho u_r r^2 \sin\theta d\theta d\phi}
+                \cancel{\rho u_r r^2 \sin\theta \textrm{d}\theta \textrm{d}\phi} +
+                \frac{\partial \rho u_r}{\partial r} r^2 \sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi +
+                2\rho u_r r\sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi + \\
+                \frac{\partial \rho u_r}{\partial r} 2r\sin\theta \cancelto{0}{\textrm{d}r^2} \textrm{d}\theta \textrm{d}\phi - 
+                \cancel{\rho u_r r^2 \sin\theta \textrm{d}\theta \textrm{d}\phi}
             \end{multline*}
 
             \begin{equation}\label{eq:mdotr}
                 \therefore\quad
-                \boxed{\Delta\dot{m}_r = \frac{\partial \rho u_r}{\partial r} r^2 \sin\theta dr d\theta d\phi +
-                2\rho u_r r\sin\theta dr d\theta d\phi}
+                \boxed{\Delta\dot{m}_r = \frac{\partial \rho u_r}{\partial r} r^2 \sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi +
+                2\rho u_r r\sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi}
             \end{equation}
 
     \subsection{Polar Mass Flow}
@@ -211,70 +211,70 @@ We'll first start with the defining the the four components of the continuity eq
             \end{equation}
             \begin{equation}
                 \dot{m}_{\theta,out}'' = \rho u_{\theta}  +
-                \frac{\partial \rho u_{\theta}}{\partial \theta} d\theta
+                \frac{\partial \rho u_{\theta}}{\partial \theta} \textrm{d}\theta
             \end{equation}
 
         \subsubsection{Polar Face Areas}
         \paragraph{Inlet}
             \begin{equation*}
-                l_{short} = r\sin\theta d\phi \qquad
-                l_{long} = (r + dr)\sin\theta d\phi 
+                l_{short} = r\sin\theta \textrm{d}\phi \qquad
+                l_{long} = (r + \textrm{d}r)\sin\theta \textrm{d}\phi 
             \end{equation*}
             \begin{equation}\label{eq:Athetain_init}
-                A_{\theta,in} = \tfrac{1}{2} \left[r\sin\theta d\phi +  (r + dr)\sin\theta d\phi\right] \times dr
+                A_{\theta,in} = \tfrac{1}{2} \left[r\sin\theta \textrm{d}\phi +  (r + \textrm{d}r)\sin\theta \textrm{d}\phi\right] \times \textrm{d}r
             \end{equation}
             \begin{equation*}
                 \Rightarrow
-                \tfrac{1}{2} \big[r\sin\theta dr d\phi +  \big(rdr + \cancelto{0}{dr^2}\big)\sin\theta d\phi\big] 
+                \tfrac{1}{2} \big[r\sin\theta \textrm{d}r \textrm{d}\phi +  \big(r\textrm{d}r + \cancelto{0}{\textrm{d}r^2}\big)\sin\theta \textrm{d}\phi\big] 
                 \Rightarrow
-                \tfrac{1}{2} \left[r\sin\theta dr d\phi + r\sin\theta dr d\phi\right]
+                \tfrac{1}{2} \left[r\sin\theta \textrm{d}r \textrm{d}\phi + r\sin\theta \textrm{d}r \textrm{d}\phi\right]
             \end{equation*}
             \begin{equation}\label{eq:Athetain_final}
-                A_{\theta,in} = r\sin\theta dr d\phi
+                A_{\theta,in} = r\sin\theta \textrm{d}r \textrm{d}\phi
             \end{equation}
 
         \paragraph{Oulet}
             \begin{equation*}
-                l_{short} = r\sin\left(\theta + d\theta\right) d\phi \qquad
-                l_{long} = (r + dr)\sin\left(\theta + d\theta\right) d\phi 
+                l_{short} = r\sin\left(\theta + \textrm{d}\theta\right) \textrm{d}\phi \qquad
+                l_{long} = (r + \textrm{d}r)\sin\left(\theta + \textrm{d}\theta\right) \textrm{d}\phi 
             \end{equation*}
             \begin{equation}\label{eq:Athetaout_init}
-                A_{\theta,out} = \tfrac{1}{2} \left[r\sin\left(\theta + d\theta\right) d\phi +  (r + dr)\sin\left(\theta + d\theta\right) d\phi \right] \times dr
+                A_{\theta,out} = \tfrac{1}{2} \left[r\sin\left(\theta + \textrm{d}\theta\right) \textrm{d}\phi +  (r + \textrm{d}r)\sin\left(\theta + \textrm{d}\theta\right) \textrm{d}\phi \right] \times \textrm{d}r
             \end{equation}
             Similarly to inlet, equation \ref{eq:Athetaout_init} reduces to:
             \begin{equation*}
                 \Rightarrow
-                r\sin\left(\theta + d\theta \right) dr d\phi
+                r\sin\left(\theta + \textrm{d}\theta \right) \textrm{d}r \textrm{d}\phi
             \end{equation*}
             
             Using the trig identity defined in the radial section, we find:
             \begin{equation}\label{eq:Athetaout_final}
-                A_{\theta,out} = r\sin\theta dr d\phi + r\cos\theta dr d\theta d\phi
+                A_{\theta,out} = r\sin\theta \textrm{d}r \textrm{d}\phi + r\cos\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi
             \end{equation}
 
         \subsubsection{Combining Polar Flow Terms}
             \begin{equation*}
             \begin{split}
                 \Delta\dot{m}_{\theta} & = (\dot{m}''_{\theta,out} A_{\theta,out} - \dot{m}''_{\theta,in} A_{\theta,in}) \\
-                & = \left( \rho u_{\theta}  + \frac{\partial \rho u_{\theta}}{\partial \theta} d\theta \right) 
-               \left(r\sin\theta dr d\phi + r\cos\theta dr d\theta d\phi\right) - 
-               \left(\rho u_{\theta}\right) \left(r\sin\theta dr d\phi\right)
+                & = \left( \rho u_{\theta}  + \frac{\partial \rho u_{\theta}}{\partial \theta} \textrm{d}\theta \right) 
+               \left(r\sin\theta \textrm{d}r \textrm{d}\phi + r\cos\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi\right) - 
+               \left(\rho u_{\theta}\right) \left(r\sin\theta \textrm{d}r \textrm{d}\phi\right)
             \end{split}
             \end{equation*}
 
             \begin{multline*}
                 \Rightarrow
-                \cancel{\rho u_{\theta}r\sin\theta dr d\phi +} 
-                \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta dr d\theta d\phi +
-                \rho u_{\theta} r\cos\theta dr d\theta d\phi \\ + 
-                \frac{\partial\rho u_{\theta}}{\partial\theta} r\cos\theta dr \cancelto{0}{d\theta^2} d\phi -
-                \cancel{\rho u_{\theta}r\sin\theta dr d\phi}
+                \cancel{\rho u_{\theta}r\sin\theta \textrm{d}r \textrm{d}\phi +} 
+                \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi +
+                \rho u_{\theta} r\cos\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi \\ + 
+                \frac{\partial\rho u_{\theta}}{\partial\theta} r\cos\theta \textrm{d}r \cancelto{0}{\textrm{d}\theta^2} \textrm{d}\phi -
+                \cancel{\rho u_{\theta}r\sin\theta \textrm{d}r \textrm{d}\phi}
             \end{multline*}
 
             \begin{equation}\label{eq:mdottheta}
                 \therefore \quad \boxed{\Delta\dot{m}_{\theta} = 
                 \rho u_{\theta} r\cos\theta dr d\theta d\phi + 
-                \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta dr d\theta d\phi}
+                \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi}
             \end{equation}
         
     \subsection{Azimuthal Mass Flow}
@@ -284,26 +284,26 @@ We'll first start with the defining the the four components of the continuity eq
             \end{equation}
             \begin{equation}
                 \dot{m}_{\phi,out}'' = \rho u_{\phi}  +
-                \frac{\partial \rho u_{\phi}}{\partial \phi} d\phi
+                \frac{\partial \rho u_{\phi}}{\partial \phi} \textrm{d}\phi
             \end{equation}
 
         \subsubsection{Azimuthal Face Areas}
         \paragraph{Inlet}
             \begin{equation*}
-                l_{short} = r d\theta \qquad
-                l_{long} = (r + dr) d\theta 
+                l_{short} = r \textrm{d}\theta \qquad
+                l_{long} = (r + \textrm{d}r) \textrm{d}\theta 
             \end{equation*}
             \begin{equation}\label{eq:Aphi_init}
-                A_{\phi,in} = \tfrac{1}{2} \left[rd\theta + \left(r+dr\right)d\theta\right] \times dr
+                A_{\phi,in} = \tfrac{1}{2} \left[r\textrm{d}\theta + \left(r+\textrm{d}r\right)\textrm{d}\theta\right] \times \textrm{d}r
             \end{equation}
             \begin{equation*}
                 \Rightarrow
-                \tfrac{1}{2} \big[r dr d\theta +  \big(rdr + \cancelto{0}{dr^2}\big) d\theta \big] 
+                \tfrac{1}{2} \big[r \textrm{d}r \textrm{d}\theta +  \big(r\textrm{d}r + \cancelto{0}{\textrm{d}r^2}\big) \textrm{d}\theta \big] 
                 \Rightarrow
-                \tfrac{1}{2} \left[r dr d\theta + r dr d\theta\right]
+                \tfrac{1}{2} \left[r \textrm{d}r \textrm{d}\theta + r \textrm{d}r \textrm{d}\theta\right]
             \end{equation*}
             \begin{equation}\label{eq:Athetain_final}
-                A_{\phi,in} = r dr d\theta
+                A_{\phi,in} = r \textrm{d}r \textrm{d}\theta
             \end{equation}
         \paragraph{Outlet}
             The inlet area is the same as the outlet area.
@@ -315,20 +315,20 @@ We'll first start with the defining the the four components of the continuity eq
             \begin{equation*}
             \begin{split}
                 \Delta\dot{m}_{\phi} & = (\dot{m}''_{\phi,out} A_{\phi,out} - \dot{m}''_{\phi,in} A_{\phi,in}) \\
-                & = \left( \rho u_{\phi}  + \frac{\partial \rho u_{\phi}}{\partial \phi} d\phi \right)
-                \left(r dr d\theta \right) -
-                \left(\rho u_{\phi} \right) \left(r dr d\theta \right)
+                & = \left( \rho u_{\phi}  + \frac{\partial \rho u_{\phi}}{\partial \phi} \textrm{d}\phi \right)
+                \left(r \textrm{d}r \textrm{d}\theta \right) -
+                \left(\rho u_{\phi} \right) \left(r \textrm{d}r \textrm{d}\theta \right)
             \end{split}
             \end{equation*}
 
             \begin{equation*}
                 \Rightarrow
-                \cancel{\rho u_\phi r dr d\theta} + \frac{\partial \rho u_{\phi}}{\partial \phi} r dr d\theta d\phi -
-                \cancel{\rho u_\phi r dr d\theta} 
+                \cancel{\rho u_\phi r \textrm{d}r \textrm{d}\theta} + \frac{\partial \rho u_{\phi}}{\partial \phi} r \textrm{d}r \textrm{d}\theta \textrm{d}\phi -
+                \cancel{\rho u_\phi r \textrm{d}r \textrm{d}\theta} 
             \end{equation*}
 
             \begin{equation}\label{eq:mdotphi}
-                \boxed{\Delta\dot{m}_{\phi} = \frac{\partial \rho u_{\phi}}{\partial \phi} r dr d\theta d\phi }
+                \boxed{\Delta\dot{m}_{\phi} = \frac{\partial \rho u_{\phi}}{\partial \phi} r \textrm{d}r \textrm{d}\theta \textrm{d}\phi }
             \end{equation}
 
 
@@ -342,25 +342,25 @@ To recap, we're trying to solve equation~\ref{eq:base_equation_orig}:
 We currently have:
     \begin{equation}
         \frac{\partial m}{\partial t} = 
-        \frac{\partial \rho}{\partial t} r^2 \sin\theta dr d\theta d\phi
+        \frac{\partial \rho}{\partial t} r^2 \sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi
         \tag{\ref{eq:dm/dt}}
     \end{equation}
 
     \begin{equation}
-        \Delta\dot{m}_r = \frac{\partial \rho u_r}{\partial r} r^2 \sin\theta dr d\theta d\phi +
-        2\rho u_r r\sin\theta dr d\theta d\phi
+        \Delta\dot{m}_r = \frac{\partial \rho u_r}{\partial r} r^2 \sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi +
+        2\rho u_r r\sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi
         \tag{\ref{eq:mdotr}}
     \end{equation}
 
     \begin{equation}
         \Delta\dot{m}_{\theta} = 
-        \rho u_{\theta} r\cos\theta dr d\theta d\phi + 
-        \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta dr d\theta d\phi
+        \rho u_{\theta} r\cos\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi + 
+        \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi
         \tag{\ref{eq:mdottheta}}
     \end{equation}
 
     \begin{equation}
-        \Delta\dot{m}_{\phi} = \frac{\partial \rho u_{\phi}}{\partial \phi} r dr d\theta d\phi 
+        \Delta\dot{m}_{\phi} = \frac{\partial \rho u_{\phi}}{\partial \phi} r \textrm{d}r \textrm{d}\theta \textrm{d}\phi 
         \tag{\ref{eq:mdotphi}}
     \end{equation}
 
@@ -368,24 +368,24 @@ We currently have:
 
     \begin{equation}
         \begin{split}
-        \frac{\partial \rho}{\partial t} r^2 \sin\theta dr d\theta d\phi = &
-        \left(\frac{\partial \rho u_r}{\partial r} r^2 \sin\theta dr d\theta d\phi +
-        2\rho u_r r\sin\theta dr d\theta d\phi \right) \\
-        & + \left(\rho u_{\theta} r\cos\theta dr d\theta d\phi + 
-        \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta dr d\theta d\phi \right) \\ 
-        & + \left(\frac{\partial \rho u_{\phi}}{\partial \phi} r dr d\theta d\phi \right)
+        \frac{\partial \rho}{\partial t} r^2 \sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi = &
+        \left(\frac{\partial \rho u_r}{\partial r} r^2 \sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi +
+        2\rho u_r r\sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi \right) \\
+        & + \left(\rho u_{\theta} r\cos\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi + 
+        \frac{\partial\rho u_{\theta}}{\partial\theta} r\sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi \right) \\ 
+        & + \left(\frac{\partial \rho u_{\phi}}{\partial \phi} r \textrm{d}r \textrm{d}\theta \textrm{d}\phi \right)
         \end{split}
     \end{equation}
 
     Factor out and eliminate the differential volume:
     \begin{multline*}
-        \frac{\partial \rho}{\partial t} \cancelto{1}{\left( r^2 \sin\theta dr d\theta d\phi \right)} = \\
+        \frac{\partial \rho}{\partial t} \cancelto{1}{\left( r^2 \sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi \right)} = \\
         \left[
         \left(\frac{2 \rho u_r}{r} + \frac{\partial \rho u_r}{\partial r} \right)_a
         + \left(\frac{\rho u_{\theta} \cos\theta}{r \sin\theta} + 
         \frac{\partial\rho u_{\theta}}{\partial\theta} \frac{1}{r} \right)_b
         + \left(\frac{\partial \rho u_{\phi}}{\partial \phi} \right)
-        \right] \cancel{\left( r^2 \sin\theta dr d\theta d\phi \right)}
+        \right] \cancel{\left( r^2 \sin\theta \textrm{d}r \textrm{d}\theta \textrm{d}\phi \right)}
     \end{multline*}
 
     \begin{equation}\label{eq:continuitywithaandb}
